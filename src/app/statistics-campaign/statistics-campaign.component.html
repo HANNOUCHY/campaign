@@ -1,0 +1,48 @@
+<mat-dialog-content class="mat-typography" style="overflow: hidden;">
+    <mat-tab-group (selectedTabChange)="onTabChanged($event);">
+        <mat-tab label="Effective" > 
+           
+            <canvas baseChart 
+              [data]="pieChartData" 
+              [labels]="pieChartLabels" 
+              [chartType]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+              [legend]="pieChartLegend">
+            </canvas>
+ 
+
+        </mat-tab>
+            <mat-tab label="Expected" > 
+            
+                <canvas baseChart 
+                  [data]="pieChartData" 
+                  [labels]="pieChartLabels" 
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+                  [plugins]="pieChartPlugins"
+                  [legend]="pieChartLegend">
+                </canvas>
+
+            </mat-tab>    
+            <mat-tab label="Unique" > 
+
+                <canvas baseChart 
+                  [data]="pieChartData" 
+                  [labels]="pieChartLabels" 
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+                  [plugins]="pieChartPlugins"
+                  [legend]="pieChartLegend">
+                </canvas>
+
+            </mat-tab>  
+      </mat-tab-group>
+      <p><b>Clicks count :</b> {{clickcount}} </p>
+      <p><b>Clicks unique :</b> {{clickunique}} </p>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+   
+  </mat-dialog-actions>
+
+</mat-dialog-content>

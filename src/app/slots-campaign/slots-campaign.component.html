@@ -1,0 +1,62 @@
+<mat-dialog-content class="mat-typography" style="overflow: hidden;">
+    <p><b>Form :</b> {{form}} </p>
+    <p><b>To :</b> {{to}} </p>
+    <mat-accordion >
+     
+          <mat-expansion-panel expanded="allExpandState">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Week
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <table mat-table matSort [dataSource]="itemsweek" class="mat-elevation-z8" style="box-shadow: none;">
+   
+                <ng-container [matColumnDef]="column" *ngFor="let column of Columnsweek">
+        
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><div *ngIf="column!='Days'">{{column.replace('TS_', '')}}</div></th>
+        
+                       
+                        <td  mat-cell  *matCellDef="let element" align="left" >
+                         
+                            <mat-checkbox *ngIf="column!='Days'"   [checked]="element[column]" class="example-margin"></mat-checkbox>
+                            <b *ngIf="column=='Days'" > {{element[column]}}</b>
+                       </td>
+                    
+                 </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="Columnsweek"></tr>
+            <tr mat-row *matRowDef="let row; columns: Columnsweek;"></tr>
+          </table>
+          </mat-expansion-panel>
+          <mat-expansion-panel  >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Weekend
+              </mat-panel-title>
+              <mat-panel-description>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <table mat-table matSort [dataSource]="itemsweekend" class="mat-elevation-z8" class="services-carte-panel" style="box-shadow: none;">
+       
+                <ng-container [matColumnDef]="column" *ngFor="let column of Columnsweekend">
+            
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><div *ngIf="column!='Days'">{{column.replace('TS_', '')}}</div></th>
+            
+                       
+                        <td  mat-cell  *matCellDef="let element" >
+                         
+                            <mat-checkbox *ngIf="column!='Days'" [checked]="element[column]" class="example-margin"></mat-checkbox>
+                            <b *ngIf="column=='Days'"> {{element[column]}}</b>
+                       </td>
+                    
+                 </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="Columnsweekend"></tr>
+            <tr mat-row *matRowDef="let row; columns: Columnsweekend;"></tr>
+            </table>
+          </mat-expansion-panel>
+        </mat-accordion>
+      
+</mat-dialog-content>

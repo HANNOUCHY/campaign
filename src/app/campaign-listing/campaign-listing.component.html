@@ -1,0 +1,46 @@
+
+<div class="stepper-main-container">
+    <mat-toolbar>
+        <span>Proxistore exercise : Hamid HANNOUCHY</span>
+      </mat-toolbar>
+<mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Hamid" #input>
+  </mat-form-field>
+<table mat-table matSort  data-table="col-three" [dataSource]="dataSource"  >
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><div class="hr-div list-header" *ngIf="column!= 'actions'">{{column}}</div></th>
+        
+        <td  mat-cell  *matCellDef="let element">
+           <div *ngIf="column=='source' || column=='status' || column=='name'">
+            {{element[column]}}
+           </div>
+           <div *ngIf="column=='budget'">
+           <b>{{element[column]['value'] | currency:element[column]['currency']}}</b> 
+           </div>
+           <div *ngIf="column=='statistics'">
+            <button mat-mini-fab color="accent" (click)="openDialog(element.statistics,StatisticsCampaignComponent)" aria-label="Example icon button with a bookmark icon">
+                <mat-icon>leaderboard</mat-icon>
+              </button>
+           </div>
+           <div *ngIf="column == 'segments'">
+            <button mat-mini-fab color="accent" (click)="openDialog(element.targets , SegmentsCampaignComponent)" aria-label="Example icon button with a bookmark icon">
+                <mat-icon>input</mat-icon>
+              </button>
+           </div>
+           <div *ngIf="column == 'slots'">
+            <button mat-mini-fab color="accent" (click)="openDialog(element.diffusion , SlotsCampaignComponent)" aria-label="Example icon button with a bookmark icon">
+                <mat-icon>date_range</mat-icon>
+              </button>
+           </div>
+           
+        </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <mat-paginator #paginator [pageSize]="size" [pageSizeOptions]="[size]" [showFirstLastButtons]="true"> </mat-paginator>
+
+</div>
