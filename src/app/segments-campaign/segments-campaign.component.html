@@ -1,0 +1,13 @@
+
+<mat-dialog-content class="mat-typography" style="overflow: hidden;">
+<mat-form-field appearance="fill">
+    <mat-label>Toppings</mat-label>
+    <mat-select  multiple>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button color="accent" aria-label="Example icon button with a bookmark icon">
+    Upload
+  </button>
+</mat-dialog-content>
+  
